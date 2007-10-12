@@ -7,8 +7,8 @@
 Summary:	A fast math parser library
 Name:		muparser
 Version:	1.28
-Release:	%mkrel 1
-License:	GPL
+Release:	%mkrel 2
+License:	MIT
 Group: 		System/Libraries
 Source0:        http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
 URL: 		http://muparser.sourceforge.net/
@@ -49,10 +49,12 @@ based on muParser.
 
 %files -n %{libname}
 %defattr(-,root,root)
+%doc Changes.txt
 %_libdir/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
+%doc docs/html
 %_libdir/*.so
 %_libdir/pkgconfig/*.pc
 %_includedir/*.h
