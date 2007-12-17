@@ -12,7 +12,6 @@ License:	MIT
 Group: 		System/Libraries
 Source0:        http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
 URL: 		http://muparser.sourceforge.net/
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 muParser is an extensible high performance math parser library. It is
