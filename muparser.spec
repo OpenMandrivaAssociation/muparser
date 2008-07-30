@@ -11,6 +11,8 @@ Release:	%mkrel 5
 License:	MIT
 Group: 		System/Libraries
 Source0:        http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
+Patch0:		muParser-1.28-destdir.patch
+Patch1:		muParser-1.28-gcc43.patch
 URL: 		http://muparser.sourceforge.net/
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -38,6 +40,8 @@ based on muParser.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p0
+%patch1 -p0
 
 %build
 rm -fr %buildroot
@@ -46,7 +50,7 @@ rm -fr %buildroot
 %make -j1
 
 %install
-%makeinstall
+%makeinstall_std
 
 %clean
 rm -fr %buildroot
