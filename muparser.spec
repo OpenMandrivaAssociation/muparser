@@ -6,13 +6,13 @@
 
 Summary:	A fast math parser library
 Name:		muparser
-Version:	1.28
-Release:	%mkrel 6
+Version:	1.30
+Release:	%mkrel 1
 License:	MIT
 Group: 		System/Libraries
 Source0:        http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
 Patch0:		muParser-1.28-destdir.patch
-Patch1:		muParser-1.28-gcc43.patch
+Patch1:		muParser-1.30-gcc43.patch
 URL: 		http://muparser.sourceforge.net/
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
