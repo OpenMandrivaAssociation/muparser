@@ -1,4 +1,3 @@
-%define version 1.28
 %define filever %(echo %version|sed -e 's|\\.||')
 %define major 0
 %define libname %mklibname %name %major
@@ -6,12 +5,11 @@
 
 Summary:	A fast math parser library
 Name:		muparser
-Version:	1.30
+Version:	1.32
 Release:	%mkrel 1
 License:	MIT
 Group: 		System/Libraries
 Source0:        http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
-Patch0:		muParser-1.28-destdir.patch
 Patch1:		muParser-1.30-gcc43.patch
 URL: 		http://muparser.sourceforge.net/
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -39,17 +37,15 @@ This package contains development files need to develop applications
 based on muParser.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p0
+%setup -q -n %{name}_v%{filever}
 %patch1 -p0
 
 %build
-rm -fr %buildroot
 %configure2_5x --enable-shared --enable-static
-# fwang: parallel build does not work
-%make -j1
+make
 
 %install
+rm -fr %buildroot
 %makeinstall_std
 
 %clean
