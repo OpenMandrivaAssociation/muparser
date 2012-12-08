@@ -6,13 +6,12 @@
 Summary:	A fast math parser library
 Name:		muparser
 Version:	1.34
-Release:	%mkrel 1
+Release:	2
 License:	MIT
 Group: 		System/Libraries
-Source0:        http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
+Source0:	http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
 Patch1:		muParser-1.30-gcc43.patch
-URL: 		http://muparser.sourceforge.net/
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+URL:		http://muparser.sourceforge.net/
 
 %description
 muParser is an extensible high performance math parser library. It is
@@ -48,24 +47,60 @@ make
 rm -fr %buildroot
 %makeinstall_std
 
-%clean
-rm -fr %buildroot
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
 %files -n %{libname}
-%defattr(-,root,root)
 %doc Changes.txt
 %_libdir/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc docs/html
 %_libdir/*.so
 %_libdir/pkgconfig/*.pc
 %_includedir/*.h
+
+
+%changelog
+* Wed Mar 09 2011 Stéphane Téletchéa <steletch@mandriva.org> 1.34-1mdv2011.0
++ Revision: 643140
+- update to new version 1.34
+
+* Mon Dec 06 2010 Oden Eriksson <oeriksson@mandriva.com> 1.32-2mdv2011.0
++ Revision: 612968
+- the mass rebuild of 2010.1 packages
+
+* Thu Feb 11 2010 Funda Wang <fwang@mandriva.org> 1.32-1mdv2010.1
++ Revision: 504221
+- New version 1.32
+
+* Mon Dec 28 2009 Ahmad Samir <ahmadsamir@mandriva.org> 1.30-1mdv2010.1
++ Revision: 483014
+- update to 1.30
+- rediff patch1
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.28-6mdv2010.0
++ Revision: 430130
+- rebuild
+
+* Wed Jul 30 2008 Funda Wang <fwang@mandriva.org> 1.28-5mdv2009.0
++ Revision: 254737
+- add gentoo patches
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Fri Oct 12 2007 Funda Wang <fwang@mandriva.org> 1.28-3mdv2008.1
++ Revision: 97256
+- add ldconfig
+
+* Fri Oct 12 2007 Funda Wang <fwang@mandriva.org> 1.28-2mdv2008.1
++ Revision: 97255
+- add docs
+- Import muparser
+- Created package structure for muparser.
+
