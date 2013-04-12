@@ -2,6 +2,7 @@
 %define major 0
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
+%define debug_package %{nil}
 
 Summary:	A fast math parser library
 Name:		muparser
