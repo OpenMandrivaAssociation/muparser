@@ -8,7 +8,7 @@
 Summary:	A fast math parser library
 Name:		muparser
 Version:	1.34
-Release:	8
+Release:	9
 License:	MIT
 Group:		System/Libraries
 Url:		http://muparser.sourceforge.net/
