@@ -1,18 +1,17 @@
 %define debug_package %{nil}
 
-%define filever %(echo %{version}|sed -e 's|\\.||')
-%define major 0
+%define major 2
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname -d %{name}
 
 Summary:	A fast math parser library
 Name:		muparser
-Version:	1.34
-Release:	10
+Version:	2.2.5
+Release:	1
 License:	MIT
 Group:		System/Libraries
 Url:		http://muparser.sourceforge.net/
-Source0:	http://nchc.dl.sourceforge.net/sourceforge/%{name}/%{name}_v%{filever}.tar.gz
+Source0:	https://codeload.github.com/beltoforion/muparser/%{name}-%{version}.tar.gz
 Patch1:		muParser-1.30-gcc43.patch
 
 %description
@@ -38,24 +37,23 @@ This package contains development files need to develop applications
 based on muParser.
 
 %prep
-%setup -qn %{name}_v%{filever}
+%setup -q
 %patch1 -p0
 
 %build
-%configure2_5x \
-	--enable-shared
+%configure \
+	--enable-shared=yes
 
-make
+%make -j1
 
 %install
 %makeinstall_std
 
 %files -n %{libname}
-%doc Changes.txt
 %{_libdir}/libmuparser.so.%{major}*
 
 %files -n %{devname}
-%doc docs/html
+%doc Changes.txt
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*.h
