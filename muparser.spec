@@ -44,7 +44,7 @@ based on muParser.
 %configure \
 	--enable-shared=yes
 
-%make
+%make -j1
 
 %install
 %makeinstall_std
