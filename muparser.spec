@@ -7,7 +7,7 @@
 Summary:	A fast math parser library
 Name:		muparser
 Version:	2.2.5
-Release:	3
+Release:	4
 License:	MIT
 Group:		System/Libraries
 Url:		http://muparser.sourceforge.net/
@@ -37,8 +37,7 @@ This package contains development files need to develop applications
 based on muParser.
 
 %prep
-%setup -q
-%patch1 -p0
+%autosetup -p0
 
 %build
 %configure \
