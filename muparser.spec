@@ -1,18 +1,18 @@
-%define debug_package %{nil}
-
 %define major 2
-%define libname %mklibname %{name} %{major}
+%define oldlibname %mklibname %{name} 2
+%define libname %mklibname %{name}
 %define devname %mklibname -d %{name}
 
 Summary:	A fast math parser library
 Name:		muparser
-Version:	2.2.5
-Release:	5
+Version:	2.3.4
+Release:	1
 License:	MIT
 Group:		System/Libraries
 Url:		http://muparser.sourceforge.net/
-Source0:	https://codeload.github.com/beltoforion/muparser/%{name}-%{version}.tar.gz
-Patch1:		muParser-1.30-gcc43.patch
+Source0:	https://github.com/beltoforion/muparser/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:	cmake
+BuildRequires:	ninja
 
 %description
 muParser is an extensible high performance math parser library. It is
@@ -22,6 +22,7 @@ constant parts of it.
 %package -n %{libname}
 Summary:	Libraries for %{name}
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 This package contains library files of muParser.
@@ -39,21 +40,20 @@ based on muParser.
 %prep
 %autosetup -p0
 
-%build
-%configure \
-	--enable-shared=yes
+%conf
+%cmake -G Ninja
 
-%make -j1
+%build
+%ninja_build -C build
 
 %install
-%makeinstall_std
+%ninja_install -C build
 
 %files -n %{libname}
 %{_libdir}/libmuparser.so.%{major}*
 
 %files -n %{devname}
-%doc Changes.txt
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*.h
-
+%{_libdir}/cmake/muparser
