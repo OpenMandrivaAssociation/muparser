@@ -9,7 +9,7 @@ Version:	2.3.4
 Release:	1
 License:	MIT
 Group:		System/Libraries
-Url:		http://muparser.sourceforge.net/
+Url:		https://muparser.sourceforge.net/
 Source0:	https://github.com/beltoforion/muparser/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	ninja
